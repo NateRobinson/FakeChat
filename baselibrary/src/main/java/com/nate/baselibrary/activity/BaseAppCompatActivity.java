@@ -28,11 +28,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import butterknife.ButterKnife;
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 import com.nate.baselibary.R;
-import com.nate.baselibrary.eventbus.EventCenter;
 import com.nate.baselibrary.loading.ShapeLoadingDialog;
 import com.nate.baselibrary.netstatus.NetChangeObserver;
 import com.nate.baselibrary.netstatus.NetStateReceiver;
@@ -41,6 +37,8 @@ import com.nate.baselibrary.utils.CommonUtils;
 import com.nate.baselibrary.utils.SmartBarUtils;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -247,13 +245,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity
     protected abstract int getContentViewLayoutID();
     
     /**
-     * 事件过来的时候
-     *
-     * @param eventCenter
-     */
-    protected abstract void onEventComming(EventCenter eventCenter);
-    
-    /**
      * 初始化所有布局和event事件
      */
     protected abstract void initViewsAndEvents();
@@ -435,14 +426,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity
             .setContentText(content)
             .setConfirmText("好的")
             .show();
-    }
-    
-    public void onEventMainThread(EventCenter eventCenter)
-    {
-        if (null != eventCenter)
-        {
-            onEventComming(eventCenter);
-        }
     }
     
     /**
